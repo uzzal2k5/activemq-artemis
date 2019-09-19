@@ -1,0 +1,18 @@
+# ActiveMQ logrotate configuration file
+compress
+
+/var/lib/artemis-instance/log/artemis.log {
+   rotate 30
+   weekly
+   compress
+   missingok
+   notifempty
+ }
+
+/var/lib/artemis-instance/log/audit.log {
+    rotate 30
+    weekly
+    compress
+    missingok
+    notifempty
+ }
