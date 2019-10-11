@@ -1,8 +1,8 @@
 ##
-# image: isdev/isactivemq-artemis
+# image: uzzal2k5/activemq-artemis
 ##
 
-FROM isrepo.ideascale.net/isdev/isjava:8.192.12-1.1
+FROM uzzal2k5/java:8.192.12
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV ACTIVEMQ_HOME /opt/activemq-artemis
 ENV ACTIVEMQ_ARTEMIS_VERSION 2.10.1
