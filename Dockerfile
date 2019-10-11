@@ -1,16 +1,17 @@
 ##
-# image: uzzal2k5/activemq-artemis
+# image: isdev/isactivemq-artemis
 ##
 
-FROM uzzal2k5/java:8.192.12
+FROM isrepo.ideascale.net/isdev/isjava:8.192.12-1.1
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV ACTIVEMQ_HOME /opt/activemq-artemis
-ENV ACTIVEMQ_ARTEMIS_VERSION 2.10.0
+ENV ACTIVEMQ_ARTEMIS_VERSION 2.10.1
 
-ENV ARTEMIS_USER activemq
+ENV ARTEMIS_USER artemis
 ENV ARTEMIS_PASSWORD brewski01
 ENV ANONYMOUS_LOGIN false
 ENV CREATE_ARGUMENTS --user ${ARTEMIS_USER} --password ${ARTEMIS_PASSWORD} --silent --http-host 0.0.0.0 --relax-jolokia
+
 
 COPY container /container
 
@@ -18,10 +19,8 @@ RUN find /container -type f -name "*.sh" -exec chmod +x {} + && \
     /container/activemq/install.sh && \
     rm -rf /container/activemq
 
-USER activemq
+USER artemis
 WORKDIR ${ACTIVEMQ_HOME}
-
-
 # Web Server
 EXPOSE 8161 \
 # JMX Exporter
